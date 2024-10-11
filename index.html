@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite App</title>
+  <style>
+    @font-face {
+      font-family: monogram;
+      src: url(public/monogram.ttf);
+    }
+
+    body {
+      font-family: monogram, monospace;
+      font-size: 2rem;
+      /*a rem is the default size of font in my browser , so, it represents 2 times whatever my browser size is*/
+      overflow: hidden;
+    }
+
+    /* p{
+        color: whitesmoke;
+      } */
+    #app {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      /*cuz this achieves more granular control, but why and how*/
+
+    }
+
+    #textbox_container {
+      display: none;
+    }
+
+    /* why is it absolute, what's the difference between rem and vh
+      rem is based on the browser's font size....and?
+      
+      text box contains button container
+      
+      
+      learn flexbox
+      justify content is the primary direction. i.e, whatever the flex direction is and the align items is like whatever the opposite is.
+      eg: flex direction: rows =>justify content works along rows and align items work along columns(rows(along the side) column along the top,bottom)) 
+      
+      
+      according to what i said below, the above seems contradictory
+      */
+    #textbox {
+      position: absolute;
+      left: 10%;
+      right: 10%;
+      bottom: 2vh;
+      min-height: 10vh;
+      background-color: rgb(255, 255, 255);
+      outline: 1px black solid;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+      word-spacing: 0.2rem;
+      filter: drop-shadow(0 0 0.75rem rgb(112, 112, 112));
+
+    }
+
+    #note {
+      position: absolute;
+      top: 1vh;
+      left: 5%;
+      color: azure;
+      display: flex;
+      flex-direction: column;
+      user-select: none;
+      /* the userslect none is so, i can't click and drag to make it look like an article */
+      /* there's no element inside #note then why use flex? */
+
+    }
+
+    .ui-text {
+      margin: 0;
+      user-select: none;
+      /* why set border radius when the border style is none? */
+    }
+
+    .ui-close-button {
+      font-family: inherit;
+      font-size: inherit;
+      padding: 1rem;
+      border-style: none;
+      border-radius: 2px;
+    }
+
+    .btn_container {
+      /* justify-self: flex-end; */
+      align-self: flex-start;
+      /* this made the button to move to the left .
+        align makes it move along the row?yeah right
+        cuz the flex was column */
+      margin-top: 1rem;
+    }
+
+    .note {
+      position: absolute;
+      left: 5%;
+      top: 1vh;
+      display: flex;
+      flex-direction: column;
+      color: rgb(238, 238, 238);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="app">
+    <div class="ui">
+
+      <p class="note">Tap or click around to move</p>
+
+      <div id="textbox_container">
+        <div id="textbox">
+          <!--  why use id instead of class, can't i? why not? -->
+          <p id="dialog" class="ui-text"></p>
+          <div class="btn_container">
+            <!-- why bother with a container for the button? -->
+            <button id="close" class="ui-close-button">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <canvas id="game"></canvas>
+    <!--why use canvas instead of another div container -->
+  </div>
+  <script type="module" src="src/main.js"></script>
+</body>
+
+</html>
